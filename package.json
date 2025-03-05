@@ -2,7 +2,13 @@
   "name": "odin-blog-api-backend",
   "version": "1.0.0",
   "description": "Blog API",
-  "keywords": ["blog", "rest-api", "express", "postgresql", "prisma-orm"],
+  "keywords": [
+    "blog",
+    "rest-api",
+    "express",
+    "postgresql",
+    "prisma-orm"
+  ],
   "homepage": "https://github.com/4bdullah7eeshan/odin-blog-api-backend",
   "bugs": {
     "url": "https://github.com/4bdullah7eeshan/odin-blog-api-backend/issues",
@@ -26,6 +32,30 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "os": ["linux", "darwin", "win32"],
-  "private": true
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "private": true,
+  "devDependencies": {
+    "prisma": "^6.4.1",
+    "supertest": "^7.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "@quixo3/prisma-session-store": "^3.1.13",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-async-handler": "^1.2.0",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0"
+  }
 }
