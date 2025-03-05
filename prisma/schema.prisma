@@ -22,7 +22,7 @@ model User {
   fullName String? @map("full_name")
   createdAt DateTime @map("created_at")
   dp String? // Cloudinary URL
-  posts Post[]
+  posts Post[] @relation("PostsPublished")
   likedPosts Post[] @relation("LikedBy")
   dislikedPosts Post[] @relation("DislikedBy")
   comments Comment[]
@@ -40,11 +40,11 @@ model Post {
   publishedAt DateTime @map("published_at")
   updatedAt DateTime @map("updated_at")
   authorId Int @map("author_id")
-  author User @relation(fields: [authorId], references: [id]) //or authors?
+  author User @relation("PostsPublished", fields: [authorId], references: [id]) //or authors?
   content String// ?? string + images 
   image String? //or images thumbnail? : Kept it just one for thumbnail. think later
   comments Comment[]
-  status Status @default(UNPUBLISHED)
+  status PostStatus @default(UNPUBLISHED)
   numberOfLikes Int @default(0) @map("number_of_likes")
   numberOfDislikes Int @default(0) @map("number_of_dislikes")
   likedBy User[] @relation("LikedBy")
@@ -63,7 +63,7 @@ model Comment {
   numberOfDislikes Int @default(0) @map("number_of_dislikes")
   dislikedBy User[] @relation("CommentDislikedBy")
   //replies // oh gosh no!!
-  content  String// the main content of the comment
+  content  String // the main content of the comment
   postId Int @map("post_id")
   post Post @relation(fields: [postId], references: [id])
 
@@ -71,7 +71,7 @@ model Comment {
 
 }
 
-enum Status {
+enum PostStatus {
   PUBISHED 
   UNPUBLISHED
 }
