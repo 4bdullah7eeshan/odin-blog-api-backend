@@ -13,3 +13,17 @@ model Session {
   data      String   
   expiresAt   DateTime
 }
+
+model Post {
+  
+}
+
+model Comment {
+
+}
+
+model User {
+
+}
+
+
