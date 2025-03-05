@@ -16,12 +16,12 @@ model Session {
 
 model User {
   id Int @id @default(autoincrement())
-  username
-  password
-  email
-  fullName
-  createdAt
-  dp //display pic for profile
+  username String
+  password String
+  email String
+  fullName String
+  createdAt DateTime
+  dp String // Cloudinary URL
 
   @@map("users")
 
@@ -29,11 +29,11 @@ model User {
 
 model Post {
   id Int @id @default(autoincrement())
-  title
-  createdAt
-  updatedAt
+  title String
+  createdAt DateTime
+  updatedAt DateTime
   author //or authors?
-  content
+  content // ?? string + images 
   image //or images thumbnail?
   comments
   status //published or not
@@ -44,12 +44,12 @@ model Post {
 model Comment {
   id Int @id @default(autoincrement())
   author // whatever details we need, can be extracted from User model
-  createdAt
+  createdAt DateTime
   updatedAt // decide if i want to allow editing a comment
   likes // really? should i put these too?
   dislikes
   replies // oh gosh no!!
-  content // the main content of the comment 
+  content  String// the main content of the comment 
 
   @@map("comments")
 
