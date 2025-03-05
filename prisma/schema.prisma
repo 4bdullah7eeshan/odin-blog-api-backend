@@ -19,8 +19,8 @@ model User {
   username String
   password String
   email String?
-  fullName String?
-  createdAt DateTime
+  fullName String? @map("full_name")
+  createdAt DateTime @map("created_at")
   dp String? // Cloudinary URL
   posts Post[]
   likedPosts Post[] @relation("LikedBy")
@@ -36,16 +36,16 @@ model User {
 model Post {
   id Int @id @default(autoincrement())
   title String
-  createdAt DateTime
-  updatedAt DateTime
-  authorId Int
+  createdAt DateTime @map("created_at")
+  updatedAt DateTime @map("updated_at")
+  authorId Int @map("author_id")
   author User @relation(fields: [authorId], references: [id]) //or authors?
   content String// ?? string + images 
   image String? //or images thumbnail? : Kept it just one for thumbnail. think later
   comments Comment[]
   status Status @default(UNPUBLISHED)
-  numberOfLikes Int @default(0)
-  numberOfDislikes Int @default(0)
+  numberOfLikes Int @default(0) @map("number_of_likes")
+  numberOfDislikes Int @default(0) @map("number_of_dislikes")
   likedBy User[] @relation("LikedBy")
   dislikedBy User[] @relation("DislikedBy")
 
@@ -55,15 +55,15 @@ model Post {
 model Comment {
   id Int @id @default(autoincrement())
   author User[]// whatever details we need, can be extracted from User model
-  createdAt DateTime
-  updatedAt DateTime// decide if i want to allow editing a comment
-  numberOfLikes Int @default(0) // really? should i put these too?
+  createdAt DateTime @map("created_at")
+  updatedAt DateTime @map("updated_at")// decide if i want to allow editing a comment
+  numberOfLikes Int @default(0) @map("number_of_likes")// really? should i put these too?
   likedBy User[] @relation("CommentLikedBy")
-  numberOfDislikes Int @default(0)
+  numberOfDislikes Int @default(0) @map("number_of_dislikes")
   dislikedBy User[] @relation("CommentDislikedBy")
   //replies // oh gosh no!!
   content  String// the main content of the comment
-  postId Int
+  postId Int @map("post_id")
   post Post @relation(fields: [postId], references: [id])
 
   @@map("comments")
