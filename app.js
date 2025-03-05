@@ -1,12 +1,10 @@
-const dotenv = require("dotenv");
 const express = require("express");
 
+const { PORT } = require("./config/index");
 const prismaClient = require("./prisma/client");
 
-dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`Express server listening on PORT: ${PORT}...`)
 });
