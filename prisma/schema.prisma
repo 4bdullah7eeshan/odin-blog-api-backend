@@ -14,16 +14,41 @@ model Session {
   expiresAt   DateTime
 }
 
+model User {
+  id Int @id @default(autoincrement())
+  username
+  password
+  email
+  fullName
+  createdAt
+  dp //display pic for profile
+
+}
+
 model Post {
-  
+  id Int @id @default(autoincrement())
+  title
+  createdAt
+  updatedAt
+  author //or authors?
+  content
+  image //or images thumbnail?
+  comments
+  status //published or not
 }
 
 model Comment {
+  id Int @id @default(autoincrement())
+  author // whatever details we need, can be extracted from User model
+  createdAt
+  updatedAt // decide if i want to allow editing a comment
+  likes // really? should i put these too?
+  dislikes
+  replies // oh gosh no!!
+  content // the main content of the comment 
 
 }
 
-model User {
 
-}
 
 
