@@ -23,6 +23,8 @@ model User {
   createdAt
   dp //display pic for profile
 
+  @@map("users")
+
 }
 
 model Post {
@@ -35,6 +37,8 @@ model Post {
   image //or images thumbnail?
   comments
   status //published or not
+
+  @@map("posts")
 }
 
 model Comment {
@@ -46,6 +50,8 @@ model Comment {
   dislikes
   replies // oh gosh no!!
   content // the main content of the comment 
+
+  @@map("comments")
 
 }
 
