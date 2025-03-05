@@ -18,10 +18,10 @@ model User {
   id Int @id @default(autoincrement())
   username String
   password String
-  email String
-  fullName String
+  email String?
+  fullName String?
   createdAt DateTime
-  dp String // Cloudinary URL
+  dp String? // Cloudinary URL
 
   @@map("users")
 
@@ -37,8 +37,8 @@ model Post {
   image //or images thumbnail?
   comments
   status //published or not
-  numberOfLikes Int
-  numberOfDislikes Int
+  numberOfLikes Int @default(0)
+  numberOfDislikes Int @default(0)
   likedBy
   dislikedBy
 
@@ -50,9 +50,9 @@ model Comment {
   author // whatever details we need, can be extracted from User model
   createdAt DateTime
   updatedAt DateTime// decide if i want to allow editing a comment
-  numberOfLikes Int // really? should i put these too?
+  numberOfLikes Int @default(0) // really? should i put these too?
   likedBy
-  numberOfDislikes Int
+  numberOfDislikes Int @default(0)
   dislikedBy
   replies // oh gosh no!!
   content  String// the main content of the comment 
