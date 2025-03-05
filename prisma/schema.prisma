@@ -21,7 +21,7 @@ model User {
   email String?
   fullName String? @map("full_name")
   createdAt DateTime @map("created_at")
-  dp String? // Cloudinary URL
+  avatarUrl String? // Cloudinary URL
   posts Post[] @relation("PostsPublished")
   likedPosts Post[] @relation("LikedBy")
   dislikedPosts Post[] @relation("DislikedBy")
