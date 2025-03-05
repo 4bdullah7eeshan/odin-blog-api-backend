@@ -23,6 +23,11 @@ model User {
   createdAt DateTime
   dp String? // Cloudinary URL
   posts Post[]
+  likedPosts Post[] @relation("LikedBy")
+  dislikedPosts Post[] @relation("DislikedBy")
+  comments Comment[]
+  likedComments Comment[] @relation("CommentLikedBy")
+  dislikedComments Comment[] @relation("CommentDislikedBy")
 
   @@map("users")
 
@@ -35,28 +40,28 @@ model Post {
   updatedAt DateTime
   authorId Int
   author User @relation(fields: [authorId], references: [id]) //or authors?
-  content // ?? string + images 
-  image //or images thumbnail?
+  content String// ?? string + images 
+  image String? //or images thumbnail? : Kept it just one for thumbnail. think later
   comments Comment[]
-  status //published or not
+  status Status @default(UNPUBLISHED)
   numberOfLikes Int @default(0)
   numberOfDislikes Int @default(0)
-  likedBy
-  dislikedBy
+  likedBy User[] @relation("LikedBy")
+  dislikedBy User[] @relation("DislikedBy")
 
   @@map("posts")
 }
 
 model Comment {
   id Int @id @default(autoincrement())
-  author // whatever details we need, can be extracted from User model
+  author User[]// whatever details we need, can be extracted from User model
   createdAt DateTime
   updatedAt DateTime// decide if i want to allow editing a comment
   numberOfLikes Int @default(0) // really? should i put these too?
-  likedBy
+  likedBy User[] @relation("CommentLikedBy")
   numberOfDislikes Int @default(0)
-  dislikedBy
-  replies // oh gosh no!!
+  dislikedBy User[] @relation("CommentDislikedBy")
+  //replies // oh gosh no!!
   content  String// the main content of the comment
   postId Int
   post Post @relation(fields: [postId], references: [id])
@@ -65,6 +70,10 @@ model Comment {
 
 }
 
+enum Status {
+  PUBISHED 
+  UNPUBLISHED
+}
 
 
 
