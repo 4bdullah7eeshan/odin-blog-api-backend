@@ -2,11 +2,30 @@
   "name": "odin-blog-api-backend",
   "version": "1.0.0",
   "description": "Blog API",
-  "main": "index.js",
+  "keywords": ["blog", "rest-api", "express", "postgresql", "prisma-orm"],
+  "homepage": "https://github.com/4bdullah7eeshan/odin-blog-api-backend",
+  "bugs": {
+    "url": "https://github.com/4bdullah7eeshan/odin-blog-api-backend/issues",
+    "email": "4bdullah7eeshan@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Abdullah Zeeshan",
+    "email": "4bdullah7eeshan@gmail.com",
+    "url": "https://4bdullah7eeshan.github.io"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4bdullah7eeshan/odin-blog-api-backend.git"
+  },
   "scripts": {
+    "start": "node --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "os": ["linux", "darwin", "win32"],
+  "private": true
 }
