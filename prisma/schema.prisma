@@ -22,6 +22,7 @@ model User {
   fullName String?
   createdAt DateTime
   dp String? // Cloudinary URL
+  posts Post[]
 
   @@map("users")
 
@@ -32,10 +33,11 @@ model Post {
   title String
   createdAt DateTime
   updatedAt DateTime
-  author //or authors?
+  authorId Int
+  author User @relation(fields: [authorId], references: [id]) //or authors?
   content // ?? string + images 
   image //or images thumbnail?
-  comments
+  comments Comment[]
   status //published or not
   numberOfLikes Int @default(0)
   numberOfDislikes Int @default(0)
@@ -55,7 +57,9 @@ model Comment {
   numberOfDislikes Int @default(0)
   dislikedBy
   replies // oh gosh no!!
-  content  String// the main content of the comment 
+  content  String// the main content of the comment
+  postId Int
+  post Post @relation(fields: [postId], references: [id])
 
   @@map("comments")
 
