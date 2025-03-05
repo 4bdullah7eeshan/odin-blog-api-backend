@@ -37,6 +37,7 @@ model Post {
   id Int @id @default(autoincrement())
   title String
   createdAt DateTime @map("created_at")
+  publishedAt DateTime @map("published_at")
   updatedAt DateTime @map("updated_at")
   authorId Int @map("author_id")
   author User @relation(fields: [authorId], references: [id]) //or authors?
