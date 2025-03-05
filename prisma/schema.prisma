@@ -45,9 +45,9 @@ model Comment {
   id Int @id @default(autoincrement())
   author // whatever details we need, can be extracted from User model
   createdAt DateTime
-  updatedAt // decide if i want to allow editing a comment
-  numberOfLikes // really? should i put these too?
-  numberOfDislikes
+  updatedAt DateTime// decide if i want to allow editing a comment
+  numberOfLikes Int // really? should i put these too?
+  numberOfDislikes Int
   replies // oh gosh no!!
   content  String// the main content of the comment 
 
