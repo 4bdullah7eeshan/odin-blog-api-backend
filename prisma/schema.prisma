@@ -46,8 +46,8 @@ model Comment {
   author // whatever details we need, can be extracted from User model
   createdAt DateTime
   updatedAt // decide if i want to allow editing a comment
-  likes // really? should i put these too?
-  dislikes
+  numberOfLikes // really? should i put these too?
+  numberOfDislikes
   replies // oh gosh no!!
   content  String// the main content of the comment 
 
