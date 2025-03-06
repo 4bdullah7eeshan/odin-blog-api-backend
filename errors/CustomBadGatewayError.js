@@ -1,0 +1,11 @@
+// This indicates an invalid response from an upstream server.
+class CustomBadGatewayError extends Error {
+    constructor(message) {
+      super(message);
+      this.statusCode = 502;
+      this.name = "BadGateway";
+    }
+}
+  
+module.exports = CustomBadGatewayError;
+  
