@@ -60,6 +60,14 @@ const updateAPostById = asyncHandler(async (req, res) => {
 
 // D: Delete
 const deleteAPostById = asyncHandler(async (req, res) => {
+    const { postId } = req.params;
+    const post = await prisma.post.delete({
+        where: {
+            postId: postId,
+        },
+    });
+
+    res.status(200).json(); // think what json to return here
 
 });
 
