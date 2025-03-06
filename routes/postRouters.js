@@ -1,4 +1,5 @@
 const { Router } = express();
+const { verifyJwtToken } = require("../middlewares/verifyJwtToken");
 const { 
     getAllPosts,
     getAPostById,
@@ -21,23 +22,23 @@ postRouter.get("/", getAllPosts); // Get all posts
 postRouter.get("/:postId", getAPostById); // Get a single post by id
 
 
-postRouter.post("/", createANewPost); // Create a new post
+postRouter.post("/", verifyJwtToken, createANewPost); // Create a new post
 
-postRouter.put("/:postId", updateAPostById); // Update a single post by id
+postRouter.put("/:postId", verifyJwtToken, updateAPostById); // Update a single post by id
 
-postRouter.delete("/:postId", deleteAPostById); // Delete a single post by id
+postRouter.delete("/:postId", verifyJwtToken, deleteAPostById); // Delete a single post by id
 
 ///
 
 postRouter.get("/:postId/comments", getAllCommentsOfAPost); // Get all comments of a post with postId
 //postRouter.get("/:postId/comments/:commentId"); // Not needed though..Get a single comments of a post with postId
 
-postRouter.post("/:postId/comments", createANewCommentToAPostByAUser); // Create a new comment
+postRouter.post("/:postId/comments", verifyJwtToken, createANewCommentToAPostByAUser); // Create a new comment
 
-postRouter.put("/:postId/comments/:commentId", updateACommentOnAPostByAUser); // edit
+postRouter.put("/:postId/comments/:commentId", verifyJwtToken, updateACommentOnAPostByAUser); // edit
 
-postRouter.delete("/:postId/comments", deleteAllCommentsOfAPost); // Delete all ..
-postRouter.delete("/:postId/comments/:commentId", deleteACommentOfAPostByAUser); // Create a new comment
+postRouter.delete("/:postId/comments", verifyJwtToken, deleteAllCommentsOfAPost); // Delete all ..
+postRouter.delete("/:postId/comments/:commentId", verifyJwtToken, deleteACommentOfAPostByAUser); // Create a new comment
 
 
 module.exports = postRouter;
