@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const { PORT } = require("./config/index");
 const prismaClient = require("./prisma/client");
@@ -6,6 +7,8 @@ const prismaClient = require("./prisma/client");
 const { userRouter, postRouter, commentRouter } = require("./routes/index.js");
 
 const app = express();
+
+app.use(cors()); // Insert options later when deploying
 
 app.use("/v1/users", userRouter);
 app.use("/v1/posts", postRouter);
