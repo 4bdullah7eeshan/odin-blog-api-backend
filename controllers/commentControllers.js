@@ -44,6 +44,16 @@ const updateACommentOnAPostByAUser = asyncHandler(async (req, res) => {
 
 // D: Delete
 const deleteACommentOfAPostByAUser = asyncHandler(async (req, res) => {
+    const { postId, commentId } = req.params;
+
+    const deletedComment = await prisma.comment.delete({
+        where: {
+            postId: postId,
+            commentId: commentId,
+        },
+    });
+
+    res.status(200).json(); // later
 
 });
 
