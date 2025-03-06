@@ -5,6 +5,17 @@ const prisma = require("../prisma/client");
 
 const createANewUser = asyncHandler(async (req, res) => {
     // goes with sign up route
+    // this should be straightforward prisma stuff
+    const { newUserData } = req.body;
+
+    // expects required data
+
+    const newUser = await prisma.user.create({
+        data: newUserData,
+    });
+
+    res.status(200).json(newUser);
+    // add res.redirect();
 });
 
 const signInAUser = asyncHandler(async (req, res) => {
