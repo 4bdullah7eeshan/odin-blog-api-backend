@@ -13,7 +13,6 @@ postRouter.post("/"); // Create a new post
 
 postRouter.put("/:postId"); // Update a single post by id
 
-postRouter.delete("/"); // Delete all posts
 postRouter.delete("/:postId"); // Delete a single post by id
 
 ///
