@@ -13,6 +13,8 @@ let cache = apicache.middleware;
 
 app.use(cors()); // Insert options later when deploying
 app.use(cache('5 minutes'));
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use("/v1/users", userRouter);
 app.use("/v1/posts", postRouter);
