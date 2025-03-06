@@ -5,7 +5,7 @@ const apicache = require("apicache");
 const { PORT } = require("./config/index");
 const prismaClient = require("./prisma/client");
 
-const { userRouter, postRouter, commentRouter } = require("./routes/index.js");
+const { userRouter, postRouter } = require("./routes/index.js");
 
 const app = express();
 let cache = apicache.middleware;

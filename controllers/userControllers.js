@@ -65,7 +65,8 @@ const signInAUser = asyncHandler(async (req, res) => {
 });
 
 const signOutAUser = asyncHandler(async (req, res) => {
-
+    // JWT logout is client-side. Place some minimal stuff here later
+    
 });
 
 // Just pacing them here because this is where they must belong. 
