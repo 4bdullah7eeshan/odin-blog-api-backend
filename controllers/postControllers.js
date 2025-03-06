@@ -21,6 +21,14 @@ const createANewPost = asyncHandler(async (req, res) => {
 
 // R: Read
 const getAPostById = asyncHandler(async (req, res) => {
+    const { postId } = req.params;
+    const post = await prisma.post.findUnique({
+        where: {
+            postId: postId,
+        },
+    });
+
+    res.status(200).json(post);
 
 });
 
