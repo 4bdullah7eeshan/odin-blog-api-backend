@@ -1,6 +1,9 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const prisma = require("../prisma/client");
+const { JWT_SECRET } = require("./config/index");
+
 
 // Think about these later
 
@@ -23,6 +26,41 @@ const createANewUser = asyncHandler(async (req, res) => {
 });
 
 const signInAUser = asyncHandler(async (req, res) => {
+    const { userSignInData } = req.body;
+
+    const user = await prisma.user.findUnique({
+        where: {
+            username: userSignInData.username, 
+        },
+    });
+
+    if (!user) {
+        // do  stuff here
+
+    }
+
+    const match = await bcrypt.compare(userSignInData.password, user.password);
+	
+	if (!match) {
+        // passwords do not match!
+
+    }
+
+    // need to set this syncho...
+    try {
+        const token = jwt.sign({ user }, JWT_SECRET, { expiresIn: "1h" });
+        
+        res.status(200).json({
+            token,
+            user: user,
+            expiresIn: 3600 // Seconds (1 hour)
+        });
+
+    } catch (err) {
+        console.error("JWT signing error:", err);
+        res.status(500).json({ message: "Authentication failed" }); // use custom errors
+    }
+
 
 });
 
