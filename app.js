@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const apicache = require("apicache");
 
 const { PORT } = require("./config/index");
 const prismaClient = require("./prisma/client");
@@ -7,8 +8,11 @@ const prismaClient = require("./prisma/client");
 const { userRouter, postRouter, commentRouter } = require("./routes/index.js");
 
 const app = express();
+let cache = apicache.middleware;
+
 
 app.use(cors()); // Insert options later when deploying
+app.use(cache('5 minutes'));
 
 app.use("/v1/users", userRouter);
 app.use("/v1/posts", postRouter);
