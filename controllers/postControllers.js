@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const prisma = require("../prisma/client");
+const CustomNotFoundError = require("../errors/CustomNotFoundError");
 
 // C: Create
 const createANewPost = asyncHandler(async (req, res) => {
@@ -28,6 +29,10 @@ const getAPostById = asyncHandler(async (req, res) => {
             postId: postId,
         },
     });
+
+    if (!post) {
+        throw new CustomNotFoundError("Post not found");
+    }
 
     res.status(200).json(post);
 
