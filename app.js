@@ -9,7 +9,6 @@ const app = express();
 
 app.use("/v1/users", userRouter);
 app.use("/v1/posts", postRouter);
-app.use("/v1/comments", commentRouter);
 
 app.listen(PORT, () => {
     console.log(`Express server listening on PORT: ${PORT}...`)
