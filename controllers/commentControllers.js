@@ -24,6 +24,15 @@ const createANewCommentToAPostByAUser = asyncHandler(async (req, res) => {
 
 // R: Read
 const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
+    const { postId } = req.params;
+
+    const allComments = await prisma.comment.findMany({
+        where: {
+            postId: postId,
+        },
+    });
+
+    res.status(200).json(allComments);
     
 
 });
@@ -39,6 +48,15 @@ const deleteACommentOfAPostByAUser = asyncHandler(async (req, res) => {
 });
 
 const deleteAllCommentsOfAPost = asyncHandler(async (req, res) => {
+    const { postId } = req.params;
+
+    const allDeletedComments = await prisma.comment.deleteMany({
+        where: {
+            postId: postId,
+        },
+    });
+
+    res.status(200).json(); // later
 
 });
 
