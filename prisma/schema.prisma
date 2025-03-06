@@ -22,7 +22,8 @@ model User {
   fullName String? @map("full_name")
   createdAt DateTime @map("created_at")
   avatarUrl String? // Cloudinary URL
-  posts Post[] @relation("PostsPublished")
+
+  posts Post[] @relation("PostsAuthored")
   comments Comment[]
   // likedPosts Post[] @relation("LikedBy")
   // dislikedPosts Post[] @relation("DislikedBy")
@@ -40,11 +41,18 @@ model Post {
   createdAt DateTime @map("created_at")
   publishedAt DateTime @map("published_at")
   updatedAt DateTime @map("updated_at")
-  authorId Int @map("author_id")
-  author User @relation("PostsPublished", fields: [authorId], references: [id]) //or authors?
-  content String// ?? string + images 
+
+  content String// ?? string + images
+
   image String? //or images thumbnail? : Kept it just one for thumbnail. think later
+  
+  // Relations
+  authorId Int @map("author_id")
+  author User @relation("PostsAuthored", fields: [authorId], references: [id]) //or authors?
+
   comments Comment[]
+  
+  // Enum
   status PostStatus @default(UNPUBLISHED)
   
   
@@ -58,14 +66,18 @@ model Post {
 
 model Comment {
   id Int @id @default(autoincrement())
-  commentatorId Int @unique
-  commentator User @relation(fields: [commentatorId], references: [id])
+
   createdAt DateTime @map("created_at")
   updatedAt DateTime @map("updated_at")// decide if i want to allow editing a comment
   
   content  String // the main content of the comment
+
+  // Relations
   postId Int @map("post_id")
   post Post @relation(fields: [postId], references: [id])
+
+  commentatorId Int @unique
+  commentator User @relation(fields: [commentatorId], references: [id])
 
   // Optional Fields. Getting too complicated. Tackle later. Nice to haves though
   // numberOfLikes Int @default(0) @map("number_of_likes")// really? should i put these too?
