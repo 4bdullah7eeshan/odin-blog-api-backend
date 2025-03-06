@@ -21,10 +21,12 @@ model User {
   email String?
   fullName String? @map("full_name")
   createdAt DateTime @map("created_at")
-  avatarUrl String? // Cloudinary URL
 
   posts Post[] @relation("PostsAuthored")
   comments Comment[]
+  
+  //avatarUrl String? // Cloudinary URL
+
   // likedPosts Post[] @relation("LikedBy")
   // dislikedPosts Post[] @relation("DislikedBy")
   // comments Comment[]
@@ -76,7 +78,7 @@ model Comment {
   postId Int @map("post_id")
   post Post @relation(fields: [postId], references: [id])
 
-  commentatorId Int @unique
+  commentatorId Int
   commentator User @relation(fields: [commentatorId], references: [id])
 
   // Optional Fields. Getting too complicated. Tackle later. Nice to haves though
