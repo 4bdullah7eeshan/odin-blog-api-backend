@@ -12,13 +12,15 @@ model Session {
   sid       String   @unique
   data      String   
   expiresAt   DateTime
+
+  @@map("sessions")
 }
 
 model User {
   id Int @id @default(autoincrement())
-  username String
+  username String @unique
   password String
-  email String?
+  email String? @unique
   fullName String? @map("full_name")
   createdAt DateTime @map("created_at")
 
@@ -40,9 +42,9 @@ model User {
 model Post {
   id Int @id @default(autoincrement())
   title String
-  createdAt DateTime @map("created_at")
-  publishedAt DateTime @map("published_at")
-  updatedAt DateTime @map("updated_at")
+  createdAt DateTime @map("created_at") @default(now())
+  publishedAt DateTime? @map("published_at")
+  updatedAt DateTime @map("updated_at") @updatedAt
 
   content String// ?? string + images
 
@@ -69,8 +71,8 @@ model Post {
 model Comment {
   id Int @id @default(autoincrement())
 
-  createdAt DateTime @map("created_at")
-  updatedAt DateTime @map("updated_at")// decide if i want to allow editing a comment
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt// decide if i want to allow editing a comment
   
   content  String // the main content of the comment
 
@@ -93,7 +95,7 @@ model Comment {
 }
 
 enum PostStatus {
-  PUBISHED 
+  PUBLISHED 
   UNPUBLISHED
 }
 
