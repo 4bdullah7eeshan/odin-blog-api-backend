@@ -4,6 +4,18 @@ const prisma = require("../prisma/client");
 // C: Create
 const createANewPost = asyncHandler(async (req, res) => {
     // createANewPostByAuthor
+    const data = req.body;
+    // data must be structured as follows when recieved:
+    // {
+    //   title: 'Title',
+    //   content: 'Post content'
+    //   authorId: 'the author id'
+    // }
+    const post = await prisma.post.create({
+        data: data,
+    });
+
+    res.status(200).json(post);
 });
 
 
