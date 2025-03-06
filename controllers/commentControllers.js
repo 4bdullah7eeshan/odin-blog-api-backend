@@ -3,13 +3,20 @@ const prisma = require("../prisma/client");
 
 // C: Create
 const createANewCommentToAPostByAUser = asyncHandler(async (req, res) => {
-    const { postId, userId } = req.params;
+    const { commentData } = req.body;
+    // no need of req.params for the post id, we can place it in the body
+    // data must be structured as follows when recieved:
+    // {
+    //   content: 'the comment',
+    //   postId: 'Post id'
+    //   commentatorId: 'the author id'
+    // }
 
-    const comment = await prisma.comment.create({
-        data: {
-            content: 
-        }
-    })
+    const newComment = await prisma.comment.create({
+        data: commentData,
+    });
+
+    res.status(200).json(newComment);
 
 
 });
@@ -17,6 +24,7 @@ const createANewCommentToAPostByAUser = asyncHandler(async (req, res) => {
 
 // R: Read
 const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
+    
 
 });
 
