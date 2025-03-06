@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs");
 const prisma = require("../prisma/client");
 
 // Think about these later
@@ -7,6 +8,9 @@ const createANewUser = asyncHandler(async (req, res) => {
     // goes with sign up route
     // this should be straightforward prisma stuff
     const { newUserData } = req.body;
+    
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    newUserData.password = hashedPassword;
 
     // expects required data
 
