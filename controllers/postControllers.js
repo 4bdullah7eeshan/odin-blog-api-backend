@@ -36,6 +36,11 @@ const getAPostById = asyncHandler(async (req, res) => {
 
 
 const getAllPosts = asyncHandler(async (req, res) => {
+    const posts = await prisma.post.findMany();
+
+    // paginate later
+    res.status(200).json(posts);
+
 
 });
 
