@@ -45,6 +45,7 @@
   "dependencies": {
     "@prisma/client": "^6.4.1",
     "@quixo3/prisma-session-store": "^3.1.13",
+    "apicache": "^1.6.3",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
