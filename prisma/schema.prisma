@@ -23,11 +23,12 @@ model User {
   createdAt DateTime @map("created_at")
   avatarUrl String? // Cloudinary URL
   posts Post[] @relation("PostsPublished")
-  likedPosts Post[] @relation("LikedBy")
-  dislikedPosts Post[] @relation("DislikedBy")
   comments Comment[]
-  likedComments Comment[] @relation("CommentLikedBy")
-  dislikedComments Comment[] @relation("CommentDislikedBy")
+  // likedPosts Post[] @relation("LikedBy")
+  // dislikedPosts Post[] @relation("DislikedBy")
+  // comments Comment[]
+  // likedComments Comment[] @relation("CommentLikedBy")
+  // dislikedComments Comment[] @relation("CommentDislikedBy")
 
   @@map("users")
 
@@ -45,27 +46,33 @@ model Post {
   image String? //or images thumbnail? : Kept it just one for thumbnail. think later
   comments Comment[]
   status PostStatus @default(UNPUBLISHED)
-  numberOfLikes Int @default(0) @map("number_of_likes")
-  numberOfDislikes Int @default(0) @map("number_of_dislikes")
-  likedBy User[] @relation("LikedBy")
-  dislikedBy User[] @relation("DislikedBy")
+  
+  
+  // numberOfLikes Int @default(0) @map("number_of_likes")
+  // numberOfDislikes Int @default(0) @map("number_of_dislikes")
+  // likedBy User[] @relation("LikedBy")
+  // dislikedBy User[] @relation("DislikedBy")
 
   @@map("posts")
 }
 
 model Comment {
   id Int @id @default(autoincrement())
-  author User[]// whatever details we need, can be extracted from User model
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
   createdAt DateTime @map("created_at")
   updatedAt DateTime @map("updated_at")// decide if i want to allow editing a comment
-  numberOfLikes Int @default(0) @map("number_of_likes")// really? should i put these too?
-  likedBy User[] @relation("CommentLikedBy")
-  numberOfDislikes Int @default(0) @map("number_of_dislikes")
-  dislikedBy User[] @relation("CommentDislikedBy")
-  //replies // oh gosh no!!
+  
   content  String // the main content of the comment
   postId Int @map("post_id")
   post Post @relation(fields: [postId], references: [id])
+
+  // Optional Fields. Getting too complicated. Tackle later. Nice to haves though
+  // numberOfLikes Int @default(0) @map("number_of_likes")// really? should i put these too?
+  // likedBy User[] @relation("CommentLikedBy")
+  // numberOfDislikes Int @default(0) @map("number_of_dislikes")
+  // dislikedBy User[] @relation("CommentDislikedBy")
+  //replies // oh gosh no!!
 
   @@map("comments")
 
