@@ -3,6 +3,14 @@ const prisma = require("../prisma/client");
 
 // C: Create
 const createANewCommentToAPostByAUser = asyncHandler(async (req, res) => {
+    const { postId, userId } = req.params;
+
+    const comment = await prisma.comment.create({
+        data: {
+            content: 
+        }
+    })
+
 
 });
 
