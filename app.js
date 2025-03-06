@@ -9,9 +9,9 @@ const commentRouter = require("./routes/commentRouter");
 
 const app = express();
 
-app.use("/user", userRouter);
-app.use("/post", postRouter);
-app.use("/comment", commentRouter);
+app.use("/users", userRouter);
+app.use("/posts", postRouter);
+app.use("/comments", commentRouter);
 
 app.listen(PORT, () => {
     console.log(`Express server listening on PORT: ${PORT}...`)
