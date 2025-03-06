@@ -2,8 +2,8 @@ const asyncHandler = require("express-async-handler");
 const prisma = require("../prisma/client");
 
 // C: Create
-const createANewPostByAuthor = asyncHandler(async (req, res) => {
-
+const createANewPost = asyncHandler(async (req, res) => {
+    // createANewPostByAuthor
 });
 
 const publishAPostById = asyncHandler(async (req, res) => {
@@ -23,6 +23,11 @@ const getAllPostsByAUser = asyncHandler(async (req, res) => {
 
 });
 
+
+const getAllPosts = asyncHandler(async (req, res) => {
+
+});
+
 // U: Update
 const updateAPostById = asyncHandler(async (req, res) => {
 
@@ -38,5 +43,10 @@ const deleteAllPostsOfAUser = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+    getAllPosts,
+    getAPostById,
+    createANewPost,
+    updateAPostById,
+    deleteAPostById,
     
 }

@@ -21,7 +21,7 @@ const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
 });
 
 // U: Update
-const updateACommentByUser = asyncHandler(async (req, res) => {
+const updateACommentOnAPostByAUser = asyncHandler(async (req, res) => {
 
 });
 
@@ -35,5 +35,10 @@ const deleteAllCommentsOfAPost = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+    getAllCommentsOfAPost,
+    createANewCommentToAPostByAUser,
+    updateACommentOnAPostByAUser,
+    deleteAllCommentsOfAPost,
+    deleteACommentOfAPostByAUser,
     
 }
