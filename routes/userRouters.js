@@ -5,5 +5,7 @@ const { Router } = express();
 const userRouter = Router();
 
 // Setup routes here
+userRouter.post("/"); // Create a new user
+
 
 module.exports = userRouter;
