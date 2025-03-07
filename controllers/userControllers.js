@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const prisma = require("../prisma/client");
+const { prismaClient } = require("../prisma/client"); // use destructuring and same var name
 const { JWT_SECRET } = require("../config/index");
 
 
@@ -10,14 +10,18 @@ const { JWT_SECRET } = require("../config/index");
 const createANewUser = asyncHandler(async (req, res) => {
     // goes with sign up route
     // this should be straightforward prisma stuff
-    const { newUserData } = req.body;
+    const newUserData = req.body; // no need to be an object
+    console.log(req.body);
+    console.log(newUserData);
+    console.log(req.body.password);
     
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     newUserData.password = hashedPassword;
 
     // expects required data
+    // { username: '', password: '' }
 
-    const newUser = await prisma.user.create({
+    const newUser = await prismaClient.user.create({
         data: newUserData,
     });
 

@@ -13,7 +13,7 @@ model User {
   password String
   email String? @unique
   fullName String? @map("full_name")
-  createdAt DateTime @map("created_at")
+  createdAt DateTime @default(now()) @map("created_at") // Set def to now
 
   posts Post[] @relation("PostsAuthored")
   comments Comment[]
