@@ -13,6 +13,9 @@ const createANewUser = asyncHandler(async (req, res) => {
     // goes with sign up route
     // this should be straightforward prisma stuff
     const newUserData = req.body; // no need to be an object
+
+    // I must first check if there is an existing user with the username.
+    // If yes, then throw an error? Which? Turns out 409!
     
     
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
