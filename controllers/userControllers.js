@@ -5,6 +5,7 @@ const { prismaClient } = require("../prisma/client"); // use destructuring and s
 const { JWT_SECRET } = require("../config/index");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const CustomUnauthorizedError = require("../errors/CustomUnauthorizedError");
+const CustomConflictError = require("../errors/CustomConflictError");
 
 
 // Think about these later
@@ -16,6 +17,15 @@ const createANewUser = asyncHandler(async (req, res) => {
 
     // I must first check if there is an existing user with the username.
     // If yes, then throw an error? Which? Turns out 409!
+    const user = await prismaClient.user.findUnique({
+        where: {
+            username: newUserData.username, 
+        },
+    });
+
+    if (user) {
+        throw CustomConflictError("User already exists");
+    }
     
     
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
