@@ -11,9 +11,7 @@ const createANewUser = asyncHandler(async (req, res) => {
     // goes with sign up route
     // this should be straightforward prisma stuff
     const newUserData = req.body; // no need to be an object
-    console.log(req.body);
-    console.log(newUserData);
-    console.log(req.body.password);
+    
     
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     newUserData.password = hashedPassword;
@@ -25,7 +23,7 @@ const createANewUser = asyncHandler(async (req, res) => {
         data: newUserData,
     });
 
-    res.status(200).json(newUser);
+    res.status(200).json(newUser); // think what to return here
     // add res.redirect();
 });
 
