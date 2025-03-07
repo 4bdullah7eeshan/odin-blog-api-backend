@@ -20,7 +20,7 @@ app.use("/v1/posts", postRouter);
 
 app.use((err, req, res, next) => {
     console.error(err);
-    res.status(err.statusCode || 500).send(err.message);
+    res.status(err.statusCode || 500).json({ "Error Code": err.statusCode || 500, "Error Message": err.message});
 });
   
 app.listen(PORT, () => {
