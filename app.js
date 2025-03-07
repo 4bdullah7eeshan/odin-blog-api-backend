@@ -3,7 +3,7 @@ const cors = require("cors");
 const apicache = require("apicache");
 
 const { PORT } = require("./config/index");
-const prismaClient = require("./prisma/client");
+const { prismaClient } = require("./prisma/client");
 
 const { userRouter, postRouter } = require("./routes/index.js");
 
