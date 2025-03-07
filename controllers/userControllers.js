@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const prisma = require("../prisma/client");
-const { JWT_SECRET } = require("./config/index");
+const { JWT_SECRET } = require("../config/index");
 
 
 // Think about these later
