@@ -28,9 +28,9 @@ const createANewUser = asyncHandler(async (req, res) => {
 });
 
 const signInAUser = asyncHandler(async (req, res) => {
-    const { userSignInData } = req.body;
+    const userSignInData = req.body;
 
-    const user = await prisma.user.findUnique({
+    const user = await prismaClient.user.findUnique({
         where: {
             username: userSignInData.username, 
         },

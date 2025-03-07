@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const prisma = require("../prisma/client");
+const { prismaClient } = require("../prisma/client");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 
 // C: Create
@@ -12,7 +12,7 @@ const createANewPost = asyncHandler(async (req, res) => {
     //   content: 'Post content'
     //   authorId: 'the author id'
     // }
-    const newPost = await prisma.post.create({
+    const newPost = await prismaClient.post.create({
         data: newPostData,
     });
 
@@ -24,7 +24,7 @@ const createANewPost = asyncHandler(async (req, res) => {
 const getAPostById = asyncHandler(async (req, res) => {
     const { postId } = req.params;
 
-    const post = await prisma.post.findUnique({
+    const post = await prismaClient.post.findUnique({
         where: {
             postId: postId,
         },
@@ -42,7 +42,7 @@ const getAPostById = asyncHandler(async (req, res) => {
 
 
 const getAllPosts = asyncHandler(async (req, res) => {
-    const allPosts = await prisma.post.findMany();
+    const allPosts = await prismaClient.post.findMany();
 
     // paginate later
     res.status(200).json(allPosts);
@@ -68,7 +68,7 @@ const updateAPostById = asyncHandler(async (req, res) => {
 const deleteAPostById = asyncHandler(async (req, res) => {
     const { postId } = req.params;
 
-    const deletedPost = await prisma.post.delete({
+    const deletedPost = await prismaClient.post.delete({
         where: {
             postId: postId,
         },
