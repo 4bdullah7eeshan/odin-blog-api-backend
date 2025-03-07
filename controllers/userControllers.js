@@ -24,7 +24,7 @@ const createANewUser = asyncHandler(async (req, res) => {
     });
 
     if (user) {
-        throw CustomConflictError("User already exists");
+        throw new CustomConflictError("User already exists");
     }
     
     
