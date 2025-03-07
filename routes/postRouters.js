@@ -1,4 +1,4 @@
-const { Router } = express();
+const { Router } = require("express");
 const { verifyJwtToken } = require("../middlewares/verifyJwtToken");
 const { 
     getAllPosts,
