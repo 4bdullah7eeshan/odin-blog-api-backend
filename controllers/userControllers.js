@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { prismaClient } = require("../prisma/client"); // use destructuring and same var name
 const { JWT_SECRET } = require("../config/index");
+const CustomNotFoundError = require("../errors/CustomNotFoundError");
+const CustomUnauthorizedError = require("../errors/CustomUnauthorizedError");
 
 
 // Think about these later
@@ -37,7 +39,7 @@ const signInAUser = asyncHandler(async (req, res) => {
     });
 
     if (!user) {
-        // do  stuff here
+        throw new CustomNotFoundError("Author not found");
 
     }
 
@@ -45,6 +47,7 @@ const signInAUser = asyncHandler(async (req, res) => {
 	
 	if (!match) {
         // passwords do not match!
+        throw new CustomUnauthorizedError("Incorrect password");
 
     }
 
