@@ -24,7 +24,7 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode || 500).send(err.message);
 });
   
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Express server listening on PORT: ${PORT}...`)
 });
 
