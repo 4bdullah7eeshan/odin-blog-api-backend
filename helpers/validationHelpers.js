@@ -31,10 +31,16 @@ const doesExists = (fieldName, model, dbField, customMessage) =>
             if (!exists) {
                 return Promise.reject(customMessage || `${fieldName} does not exist`);
             }
+
             return true;
         });
 
-
+const isPasswordMatch = (fieldName, model, dbField, customMessage) =>
+    body(fieldName)
+        .custom(async (value) => {
+            const isMatch = await checkPasswordMatch(model, dbField, value);
+            
+        })
                 
 module.exports = {
     notEmpty,

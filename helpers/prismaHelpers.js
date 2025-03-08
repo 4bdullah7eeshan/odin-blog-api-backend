@@ -11,4 +11,8 @@ const recordExists = asyncHandler(async (modelName, fieldName, fieldValue) => {
     return !!record;
 });
 
+const checkPasswordMatch = asyncHandler(async (modelName, correctPassword, enteredPassword) => {
+    const 
+})
+
 module.exports = recordExists;
