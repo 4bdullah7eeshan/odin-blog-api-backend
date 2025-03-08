@@ -61,6 +61,7 @@ const updateAPostById = asyncHandler(async (req, res) => {
     // const unpublishAPostById = asyncHandler(async (req, res) => {
     
     // });
+    const postToBeUpdated = req.params; // id of post to be updated. is there in params.
     const updatedPostData = req.body;
 
     // handle validations later
@@ -68,7 +69,7 @@ const updateAPostById = asyncHandler(async (req, res) => {
 
     const updatedPost = await prismaClient.post.update({
         where: {
-            postId: updatedPostData.postId,
+            postToBeUpdated, // should i just pass the whole req.params instead??
         },
         data: {
             updatedPostData,
