@@ -51,6 +51,7 @@ const signInAUser = asyncHandler(async (req, res) => {
         },
     });
 
+    // Need to carve these out and place in validations
     if (!user) {
         throw new CustomNotFoundError("Author not found");
 
