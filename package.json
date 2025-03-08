@@ -26,8 +26,8 @@
     "url": "git+https://github.com/4bdullah7eeshan/odin-blog-api-backend.git"
   },
   "scripts": {
-    "start": "node --watch app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=development && node --watch app.js",
+    "test": "NODE_ENV=test && jest"
   },
   "engines": {
     "node": ">=18.0.0"
