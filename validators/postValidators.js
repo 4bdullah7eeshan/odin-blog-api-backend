@@ -2,7 +2,7 @@ const { param, body }= require("express-validator")
 
 const validatePostId = [
     param("postId")
-        .isInt()
+        .isInt({ min: 1 })
         .withMessage("Post ID must be an integer")
 ];
 

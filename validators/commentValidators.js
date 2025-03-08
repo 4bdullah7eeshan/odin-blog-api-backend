@@ -2,7 +2,7 @@ const { param }= require("express-validator")
 
 const validateCommentId = [
     param("commentId")
-        .isInt()
+        .isInt({ min: 1 })
         .withMessage("Post ID must be an integer")
 ];
 
