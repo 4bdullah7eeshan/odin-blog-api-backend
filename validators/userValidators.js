@@ -1,25 +1,29 @@
-const {
-    notEmpty,
-    hasLength,
-    isUnique,
-    doesExists,
-} = require("../helpers/validationHelpers");
-const handleValidationErrors = require("../middlewares/handleValidationErrors");
-const { body, query, params }= require("express-validators")
+const { body }= require("express-validators")
 
 const validateUserSignUp = [
-    notEmpty("username"),
-    notEmpty("email"),
-    notEmpty("password"),
-    hasLength("username", 3, 10),
-    hasLength("password", 5, undefined, "Password must be at least 5 characters long"),
-    handleValidationErrors,
+    body("username")
+        .trim()
+        .notEmpty()
+        .withMessage("Username is required")
+        .hasLength({ min: 3, max: 10 })
+        .withMessage("Username must be of a minimum 3 and a maximum of 10 characters!")
+        .escape()
+    body("password")
+        .isLength({ min: 8 })
+        .withMessage("Password must be at least 8 characters!")
+        .escape()
 ];
 
 const validateUserSignIn = [
-    notEmpty("username"),
-    notEmpty("password"),
-    handleValidationErrors,
+    body("username")
+        .trim()
+        .notEmpty()
+        .withMessage("Username is required")
+        .escape()
+    body("password")
+        .notEmpty()
+        .withMessage("Password is required!")
+        .escape()
 ];
 
 module.exports = {
