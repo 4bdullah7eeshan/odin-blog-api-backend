@@ -4,11 +4,19 @@ A REST API for bloggers to create and publish blog posts and allow readers to co
 
 ## Introduction
 
-## About
+## About/Description
 
 ## Features
 
 ## Get Started
+
+## Tech Stack
+
+## Project Structure
+
+## Contributing
+
+## License
 
 ## What the project does
 
@@ -19,5 +27,13 @@ A REST API for bloggers to create and publish blog posts and allow readers to co
 ## Maintainers
 
 ## Contributors
+
+## Todo
+
+- Validations
+- Pending controllers
+- User as author vs normal
+
+## Wiki
 
 
