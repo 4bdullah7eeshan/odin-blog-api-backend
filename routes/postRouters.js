@@ -1,4 +1,7 @@
 const { Router } = require("express");
+const { validatePostId, validatePostContent } = require("../validators/postValidators");
+const { validateCommentId, validateCommentText } = require("../validators/commentValidators");
+const { handleValidationErrors } = require("../middlewares/handleValidationErrors");
 const { verifyJwtToken } = require("../middlewares/verifyJwtToken");
 const { 
     getAllPosts,
@@ -19,26 +22,26 @@ const postRouter = Router();
 
 // Setup routes here
 postRouter.get("/", getAllPosts); // Get all posts
-postRouter.get("/:postId", getAPostById); // Get a single post by id
+postRouter.get("/:postId", validatePostId, handleValidationErrors, getAPostById); // Get a single post by id
 
 
-postRouter.post("/", verifyJwtToken, createANewPost); // Create a new post
+postRouter.post("/", validatePostId, verifyJwtToken, validatePostContent, handleValidationErrors, createANewPost); // Create a new post
 
-postRouter.put("/:postId", verifyJwtToken, updateAPostById); // Update a single post by id
+postRouter.put("/:postId", validatePostId, verifyJwtToken, validatePostContent, handleValidationErrors, updateAPostById); // Update a single post by id
 
-postRouter.delete("/:postId", verifyJwtToken, deleteAPostById); // Delete a single post by id
+postRouter.delete("/:postId", validatePostId, verifyJwtToken, handleValidationErrors, deleteAPostById); // Delete a single post by id
 
 ///
 
-postRouter.get("/:postId/comments", getAllCommentsOfAPost); // Get all comments of a post with postId
+postRouter.get("/:postId/comments", validatePostId, handleValidationErrors, getAllCommentsOfAPost); // Get all comments of a post with postId
 //postRouter.get("/:postId/comments/:commentId"); // Not needed though..Get a single comments of a post with postId
 
-postRouter.post("/:postId/comments", verifyJwtToken, createANewCommentToAPostByAUser); // Create a new comment
+postRouter.post("/:postId/comments", verifyJwtToken, validatePostId, validateCommentId, validateCommentText, createANewCommentToAPostByAUser); // Create a new comment
 
-postRouter.put("/:postId/comments/:commentId", verifyJwtToken, updateACommentOnAPost); // edit
+postRouter.put("/:postId/comments/:commentId", verifyJwtToken, validatePostId, validateCommentId, validateCommentText, updateACommentOnAPost); // edit
 
-postRouter.delete("/:postId/comments", verifyJwtToken, deleteAllCommentsOfAPost); // Delete all ..
-postRouter.delete("/:postId/comments/:commentId", verifyJwtToken, deleteACommentOfAPost); // Create a new comment
+postRouter.delete("/:postId/comments", verifyJwtToken,validatePostId, handleValidationErrors, deleteAllCommentsOfAPost); // Delete all ..
+postRouter.delete("/:postId/comments/:commentId", verifyJwtToken, validatePostId, validateCommentId, handleValidationErrors, deleteACommentOfAPost); // Create a new comment
 
 
 module.exports = postRouter;
