@@ -39,12 +39,12 @@ const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
 
 // U: Update
 const updateACommentOnAPostByAUser = asyncHandler(async (req, res) => {
+    const commentOfAPostToBeUpdated = req.params
     const updatedCommentData = req.body;
 
     const updatedCommentOnAPostByAUser = await prismaClient.comment.update({
         where: {
-            postId: updatedCommentData.postId,
-            commentatorId: updatedCommentData.commentatorId,
+            commentOfAPostToBeUpdated,
         },
         data: {
             updatedCommentData,
