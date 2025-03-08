@@ -10,9 +10,9 @@ const {
 const {
     getAllCommentsOfAPost,
     createANewCommentToAPostByAUser,
-    updateACommentOnAPostByAUser,
+    updateACommentOnAPost,
     deleteAllCommentsOfAPost,
-    deleteACommentOfAPostByAUser
+    deleteACommentOfAPost
 } = require("../controllers/commentControllers");
 
 const postRouter = Router();
@@ -35,10 +35,10 @@ postRouter.get("/:postId/comments", getAllCommentsOfAPost); // Get all comments 
 
 postRouter.post("/:postId/comments", verifyJwtToken, createANewCommentToAPostByAUser); // Create a new comment
 
-postRouter.put("/:postId/comments/:commentId", verifyJwtToken, updateACommentOnAPostByAUser); // edit
+postRouter.put("/:postId/comments/:commentId", verifyJwtToken, updateACommentOnAPost); // edit
 
 postRouter.delete("/:postId/comments", verifyJwtToken, deleteAllCommentsOfAPost); // Delete all ..
-postRouter.delete("/:postId/comments/:commentId", verifyJwtToken, deleteACommentOfAPostByAUser); // Create a new comment
+postRouter.delete("/:postId/comments/:commentId", verifyJwtToken, deleteACommentOfAPost); // Create a new comment
 
 
 module.exports = postRouter;

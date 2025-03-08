@@ -38,11 +38,11 @@ const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
 });
 
 // U: Update
-const updateACommentOnAPostByAUser = asyncHandler(async (req, res) => {
+const updateACommentOnAPost = asyncHandler(async (req, res) => {
     const commentOfAPostToBeUpdated = req.params
     const updatedCommentData = req.body;
 
-    const updatedCommentOnAPostByAUser = await prismaClient.comment.update({
+    const updatedCommentOnAPost = await prismaClient.comment.update({
         where: {
             commentOfAPostToBeUpdated,
         },
@@ -54,7 +54,7 @@ const updateACommentOnAPostByAUser = asyncHandler(async (req, res) => {
 });
 
 // D: Delete
-const deleteACommentOfAPostByAUser = asyncHandler(async (req, res) => {
+const deleteACommentOfAPost = asyncHandler(async (req, res) => {
     const { postId, commentId } = req.params;
 
     const deletedComment = await prismaClient.comment.delete({
@@ -84,8 +84,8 @@ const deleteAllCommentsOfAPost = asyncHandler(async (req, res) => {
 module.exports = {
     getAllCommentsOfAPost,
     createANewCommentToAPostByAUser,
-    updateACommentOnAPostByAUser,
+    updateACommentOnAPost,
     deleteAllCommentsOfAPost,
-    deleteACommentOfAPostByAUser,
+    deleteACommentOfAPost,
     
 }
