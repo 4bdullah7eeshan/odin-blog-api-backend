@@ -50,6 +50,8 @@ const updateACommentOnAPost = asyncHandler(async (req, res) => {
         data: updatedCommentData,
     });
 
+    res.status(200).json({ updatedCommentOnAPost });
+
 });
 
 // D: Delete
