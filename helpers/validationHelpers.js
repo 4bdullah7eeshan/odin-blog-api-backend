@@ -23,6 +23,18 @@ const isUnique = (fieldName, model, dbField, customMessage) =>
             }
             return true;
         });
+
+const doesExists = (fieldName, model, dbField, customMessage) =>
+    body(fieldName)
+        .custom(async (value) => {
+            const exists = await recordExists(model, dbField, value);
+            if (!exists) {
+                return Promise.reject(customMessage || `${fieldName} does not exist`);
+            }
+            return true;
+        });
+
+
                 
 module.exports = {
     notEmpty,

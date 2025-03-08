@@ -2,8 +2,10 @@ const {
     notEmpty,
     hasLength,
     isUnique,
+    doesExists,
 } = require("../helpers/validationHelpers");
 const handleValidationErrors = require("../middlewares/handleValidationErrors");
+const { body, query, params }= require("express-validators")
 
 const validateUserSignUp = [
     notEmpty("username"),
@@ -18,6 +20,7 @@ const validateUserSignUp = [
 const validateUserSignIn = [
     notEmpty("username"),
     notEmpty("password"),
+    doesExists("username", "User", "username"),
     handleValidationErrors,
 ];
 
