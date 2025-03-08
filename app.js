@@ -21,7 +21,7 @@ app.use("/v1/posts", postRouter);
 
 // Catch-all for 404 (NOT FOUND) errors
 app.use((req, res, next) => {
-    next(new NotFoundError("Endpoint not found")); // should use like this since no asynchandler
+    next(new CustomNotFoundError("Endpoint not found")); // should use like this since no asynchandler
 });
 
 app.use((err, req, res, next) => {
