@@ -30,9 +30,6 @@ A REST API for bloggers to create and publish blog posts and allow readers to co
 
 ## Todo
 
-- Validations (Also think about how to use custom errors)
-- Pending controllers (I think this was done)
-- User as author vs normal
 
 ## Wiki
 
