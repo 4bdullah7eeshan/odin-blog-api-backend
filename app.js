@@ -4,6 +4,7 @@ const apicache = require("apicache");
 
 const { PORT } = require("./config/index");
 const { userRouter, postRouter } = require("./routes/index.js");
+const CustomNotFoundError = require("./errors/CustomNotFoundError");
 
 const app = express();
 let cache = apicache.middleware;
@@ -17,6 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/v1/users", userRouter);
 app.use("/v1/posts", postRouter);
+
+// Catch-all for 404 (NOT FOUND) errors
+app.use((req, res, next) => {
+    next(new NotFoundError("Endpoint not found")); // should use like this since no asynchandler
+});
 
 app.use((err, req, res, next) => {
     console.error(err);
