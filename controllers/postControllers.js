@@ -16,7 +16,7 @@ const createANewPost = asyncHandler(async (req, res) => {
         data: newPostData,
     });
 
-    res.status(200).json(newPost);
+    res.status(200).json({ newPost });
 });
 
 
@@ -65,16 +65,18 @@ const updateAPostById = asyncHandler(async (req, res) => {
     const updatedPostData = req.body; // must be received as required...
 
     // handle validations later
-    
+    console.log("i m here");
 
     const updatedPost = await prismaClient.post.update({
         where: {
-            id: postId, // should i just pass the whole req.params instead??
+            id: parseInt(postId), // should i just pass the whole req.params instead??
         },
         data: updatedPostData,
     });
 
-    res.status(200).json(updatedPost);
+    console.log("i m here now");
+
+    res.status(200).json({ updatedPost });
 
 
 
