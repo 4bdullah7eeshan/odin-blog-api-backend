@@ -30,6 +30,9 @@ const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
         where: {
             postId: parseInt(postId),
         },
+        include: {
+            commentator: true,
+        }
     });
 
     res.status(200).json(allComments);

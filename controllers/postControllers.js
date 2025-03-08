@@ -28,6 +28,13 @@ const getAPostById = asyncHandler(async (req, res) => {
         where: {
             postId: postId,
         },
+        include: {
+            author: true,
+            // not including comments as i am getting them on its own route...
+            // which is better? to include here or there in routes as a resource?
+            // it was advised not to create a route each resource and it not to map em with db
+            // so...separate?
+        }, 
     });
 
     if (!post) {
