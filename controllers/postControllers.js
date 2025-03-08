@@ -61,6 +61,23 @@ const updateAPostById = asyncHandler(async (req, res) => {
     // const unpublishAPostById = asyncHandler(async (req, res) => {
     
     // });
+    const updatedPostData = req.body;
+
+    // handle validations later
+    
+
+    const updatedPost = await prismaClient.post.update({
+        where: {
+            postId: updatedPostData.postId,
+        },
+        data: {
+            updatedPostData,
+        },
+    });
+
+    res.status(200).json(updatedPost);
+
+
 
 });
 
