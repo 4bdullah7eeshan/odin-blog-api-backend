@@ -32,7 +32,6 @@ A REST API for bloggers to create and publish blog posts and allow readers to co
 ## Todo
 
 Testing:
-- Split `app.js` till `app.listen()` and use it in all testing files and a separate one for running the app
 - Caching is there. So research how it might work in testing files.
 - Finally...work on the test files. That's all. I guess.
 - Need to sort Prisma migrations for testing env

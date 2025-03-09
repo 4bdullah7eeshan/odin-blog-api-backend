@@ -29,8 +29,4 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode || 500).json({ "errorCode": err.statusCode || 500, "errorMessage": err.message});
 });
 
-if (NODE_ENV != "test") {
-    app.listen(PORT, () => {
-        console.log(`Express server listening on PORT: ${PORT}...`)
-    });
-}
+module.exports = app;
