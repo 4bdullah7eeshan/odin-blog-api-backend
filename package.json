@@ -26,7 +26,7 @@
     "url": "git+https://github.com/4bdullah7eeshan/odin-blog-api-backend.git"
   },
   "scripts": {
-    "start": "NODE_ENV=development && node --watch main.js",
+    "dev": "NODE_ENV=development && node --watch main.js",
     "test": "NODE_ENV=test && jest"
   },
   "engines": {
