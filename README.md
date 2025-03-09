@@ -266,4 +266,18 @@ This project is licensed under the Apache License, Version 2.0 (the â€œLicenseâ€
 
 You can do (nearly) anything you want with the code, with very few exceptions. A copy of the License is provided in the LICENSE file in this repository.
 
+## Background
+
+This work was done as part of [The Odin Project's](https://www.theodinproject.com/) [Blog API](https://www.theodinproject.com/lessons/node-path-nodejs-blog-api) project.
+
+### To Odinites
+
+Thanks for being here :heart: !
+
+I have revisited this project the second time to gain a deeper understanding of most of the things involved in the creating of a REST API.
+
+This project was a very simple and a small one. Hence, it allowed me to think about all the various pieces. 
+
+It also serves as a good template for all REST API related projects in the [Node.js](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs) path.
+
 
