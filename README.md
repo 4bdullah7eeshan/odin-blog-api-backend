@@ -260,6 +260,12 @@ Currently this repository is maintained just by me. In future, I plan to open co
 - Finally...work on the test files. That's all. I guess.
 - Need to sort Prisma migrations for testing env
 
+### Other
+
+- Deploy when frontend is done
+- Modify Prisma models to set role for User
+
+
 ## License
 
 This project is licensed under the Apache License, Version 2.0 (the “License”).
