@@ -243,9 +243,10 @@ Running the above command will do the following *two* things:
 - [--watch](https://nodejs.org/docs/latest-v20.x/api/cli.html#--watch)
 
 
-## Get Help
+## Contact
 
-Contact me through email 
+Contact me through email [4bdullah7eeshan@gmail.com](mailto:4bdullah7eeshan@gmail.com) for any questions or feedback.
+
 
 ## Maintainers
 
