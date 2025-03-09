@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const apicache = require("apicache");
 
-const { PORT, NODE_ENV } = require("./config/index");
 const { userRouter, postRouter } = require("./routes/index.js");
 const CustomNotFoundError = require("./errors/CustomNotFoundError");
 

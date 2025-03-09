@@ -11,6 +11,7 @@ const handleValidationErrors = (req, res, next) => {
         }));
         
         return next(new CustomBadRequestError("Validation errors occurred", errorList));
+        //throw new CustomBadRequestError("Validation errors occurred", errorList);
     }
     
     next();

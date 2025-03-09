@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { validateUserSignUp, validateUserSignIn } = require("../validators/userValidators");
-const { handleValidationErrors } = require("../middlewares/handleValidationErrors")
+const handleValidationErrors = require("../middlewares/handleValidationErrors")
 const {
     createANewUser,
     signInAUser,

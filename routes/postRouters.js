@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { validatePostId, validatePostContent } = require("../validators/postValidators");
 const { validateCommentId, validateCommentText } = require("../validators/commentValidators");
-const { handleValidationErrors } = require("../middlewares/handleValidationErrors");
+const handleValidationErrors = require("../middlewares/handleValidationErrors");
 const { verifyJwtToken } = require("../middlewares/verifyJwtToken");
 const { 
     getAllPosts,

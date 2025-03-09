@@ -5,7 +5,7 @@ const validateUserSignUp = [
         .trim()
         .notEmpty()
         .withMessage("Username is required")
-        .hasLength({ min: 3, max: 10 })
+        .isLength({ min: 3, max: 10 })
         .withMessage("Username must be of a minimum 3 and a maximum of 10 characters!")
         .escape(),
     body("password")

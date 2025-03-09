@@ -1,4 +1,4 @@
-const { param }= require("express-validator")
+const { param, body }= require("express-validator")
 
 const validateCommentId = [
     param("commentId")
