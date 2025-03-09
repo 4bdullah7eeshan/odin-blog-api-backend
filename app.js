@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const apicache = require("apicache");
 
-const { PORT } = require("./config/index");
+const { PORT, NODE_ENV } = require("./config/index");
 const { userRouter, postRouter } = require("./routes/index.js");
 const CustomNotFoundError = require("./errors/CustomNotFoundError");
 
@@ -28,7 +28,9 @@ app.use((err, req, res, next) => {
     console.error(err);
     res.status(err.statusCode || 500).json({ "errorCode": err.statusCode || 500, "errorMessage": err.message});
 });
-  
-app.listen(PORT, () => {
-    console.log(`Express server listening on PORT: ${PORT}...`)
-});
+
+if (NODE_ENV != "test") {
+    app.listen(PORT, () => {
+        console.log(`Express server listening on PORT: ${PORT}...`)
+    });
+}
