@@ -268,7 +268,7 @@ You can do (nearly) anything you want with the code, with very few exceptions. A
 
 ## Background
 
-This work was done as part of [The Odin Project's](https://www.theodinproject.com/) [Blog API](https://www.theodinproject.com/lessons/node-path-nodejs-blog-api) project.
+This work was done as part of [The Odin Project](https://www.theodinproject.com/)'s [Blog API](https://www.theodinproject.com/lessons/node-path-nodejs-blog-api) project.
 
 ### To Odinites
 
