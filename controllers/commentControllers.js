@@ -75,6 +75,8 @@ const deleteACommentOfAPost = asyncHandler(async (req, res) => {
 const deleteAllCommentsOfAPost = asyncHandler(async (req, res) => {
     const { postId } = req.params;
 
+    // only AUTHOR sd do it.. not handled yet
+
     const allDeletedComments = await prismaClient.comment.deleteMany({
         where: {
             postId: parseInt(postId),
