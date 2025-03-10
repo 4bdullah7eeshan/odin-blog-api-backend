@@ -260,6 +260,10 @@ Currently this repository is maintained just by me. In future, I plan to open co
 - Finally...work on the test files. That's all. I guess.
 - Need to sort Prisma migrations for testing env
 
+### User Verification Step
+
+- At the moment, the endpoints just check if the user is logged in (authentication). For edit/delete operations, need to add another layer of authorization.
+
 ### Other
 
 - Deploy when frontend is done
