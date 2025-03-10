@@ -10,7 +10,7 @@ const {
     deleteACommentOfAPost
 } = require("../controllers/commentControllers");
 
-const commentRouter = Router();
+const commentRouter = Router({mergeParams: true});
 
 commentRouter.get("/", handleValidationErrors, getAllCommentsOfAPost); // Get all comments of a post with postId
 //postRouter.get("/:postId/comments/:commentId"); // Not needed though..Get a single comments of a post with postId
