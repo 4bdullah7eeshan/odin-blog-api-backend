@@ -26,7 +26,7 @@ const createANewCommentToAPostByAUser = asyncHandler(async (req, res) => {
 const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
     const { postId } = req.params;
 
-    const allComments = await prismaClient.comment.findMany({
+    const allCommentsOfAPost = await prismaClient.comment.findMany({
         where: {
             postId: parseInt(postId),
         },
@@ -35,8 +35,16 @@ const getAllCommentsOfAPost = asyncHandler(async (req, res) => {
         }
     });
 
-    res.status(200).json(allComments);
+    res.status(200).json(allCommentsOfAPost);
     
+
+});
+
+const getAllComments = asyncHandler(async (req, res) => {
+
+    const allComments = await prismaClient.comment.findMany();
+
+    res.status(200).json(allComments);
 
 });
 
@@ -77,7 +85,7 @@ const deleteAllCommentsOfAPost = asyncHandler(async (req, res) => {
 
     // only AUTHOR sd do it.. not handled yet
 
-    const allDeletedComments = await prismaClient.comment.deleteMany({
+    const allDeletedCommentsOfAPost = await prismaClient.comment.deleteMany({
         where: {
             postId: parseInt(postId),
         },
@@ -87,11 +95,19 @@ const deleteAllCommentsOfAPost = asyncHandler(async (req, res) => {
 
 });
 
+const deleteAllComments = asyncHandler(async (req, res) => {
+
+    const allDeletedComments = await prismaClient.comment.deleteMany();
+
+    res.status(200).json(); // later
+});
+
 module.exports = {
     getAllCommentsOfAPost,
+    getAllComments,
     createANewCommentToAPostByAUser,
     updateACommentOnAPost,
     deleteAllCommentsOfAPost,
     deleteACommentOfAPost,
-    
+    deleteAllComments,
 }
